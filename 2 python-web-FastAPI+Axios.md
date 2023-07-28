@@ -2,7 +2,7 @@
 
 Para enviar requisições HTTP do lado do cliente podemos utilizar o Axios que é um cliente HTTP baseado em promessas e utiliza `XMLHttpRequest` do Javascript no lado do cliente e roda no lado do servidor utilizando `node.js`
 
-Vamos criar uma página HTML com formulário que envia nome e número de telefone para o servidor pelo Javascript.
+Vamos criar um projeto que contém uma página HTML com formulário que envia o nome e número de telefone para uma aplicação Python que fica do lado do servidor. Para implementar o envio dos dados do formulário utilizaremos a linguagem Javascript.
 
 ## Lado do cliente
 
