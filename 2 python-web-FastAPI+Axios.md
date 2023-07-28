@@ -94,7 +94,7 @@ def root():
     return {"message":"ok"}
 ~~~
 
-A requisição enviada do cliente tem sua origem no host `http://127.0.0.1:5500` e a aplicação do lado servidor está em `http://127.0.0.1:8000` e assim temos uma requisição de uma origem externa. Nesse caso utilizamos `CORSMiddleware` para permitir que a aplicação possa receber requisições de outras origens, caso contrário, a política de segurança do CORS não ira permitir.
+A requisição enviada do cliente tem sua origem no host `http://127.0.0.1:5500` e a aplicação do lado servidor está em `http://127.0.0.1:8000` e, sendo assim, temos uma requisição de uma origem externa. Nesse caso, utilizamos `CORSMiddleware` para permitir que a aplicação possa receber requisições de outras origens, caso contrário, a política de segurança do CORS não irá permitir.
 
 Até aqui a nossa rota não está recebendo os dados do formulário e quando o formulário é submetido apenas recebemos um `JSON` com mensagem de ok. 
 
