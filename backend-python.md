@@ -13,7 +13,7 @@ Comentários:
 - Existem outros frameworks tais como Roadmap e Django para desenvolver aplicações python.
 - No PHP existe o framework Lavarel que utiliza o padrão de operações de rota
 
-## App Ola Mundo
+## App OlaMundo
 Crie o arquivo `main.py` para implementarmos o código.
 
 ### Importando FastAPI
@@ -116,7 +116,7 @@ Para passar parâmetros pelo URL utilizamos `URL/ola/?nome=arg`. No nosso caso a
 
 Parei de estudar em https://fastapi.tiangolo.com/tutorial/query-params/
 
-# Cliente Servidor
+# Cliente/Servidor
 
 Para enviar requisições HTTP do lado do cliente podemos utilizar o Axios que é um cliente HTTP baseado em promessas e utiliza `XMLHttpRequest` do Javascript no lado do cliente e roda no lado do servidor utilizando `node.js`
 
