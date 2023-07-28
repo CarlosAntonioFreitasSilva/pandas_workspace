@@ -1,4 +1,4 @@
-# Banco de dados SQLite
+# Banco de dados
 
 Para conexão com banco de dados utiliza-se `sqlite3.connect(dir) ` passando como parametro o diretório do banco de dados a ser conectado. Vamos criar o método `conectar()` que ao ser chamado irá executar tal comando.
 ~~~py
