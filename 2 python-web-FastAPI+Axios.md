@@ -28,7 +28,7 @@ Vamos criar a página `index.html`
     <form id="form">
         <input type="text" id="nome" placeholder="Nome">
         <input type="text" id="celular" placeholder="Celular">
-        <input type="submit" value="OK" id="submit">
+        <input type="submit" value="OK">
     </form>
 </body>
 
