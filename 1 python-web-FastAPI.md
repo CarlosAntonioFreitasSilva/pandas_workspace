@@ -90,7 +90,7 @@ def root():
 
 Para executar o código acessamos o diretório do arquivo onde está a nossa aplicação, nesse caso, o arquivo `main.py` e digitamos o comando para iniciarmos o servidor
 
-`uvicorn main: app --reload`
+`uvicorn main:app --reload`
 
 Observe que foi utilizado o nome do arquivo `main` e nome da variável que armazena a instância da classe `FastAPI` que é `app`.
 
