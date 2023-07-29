@@ -130,4 +130,4 @@ def root(contato: Contato):
 
 Para que nossa aplicação fique mais completa podemos implementar um código que os dados do formulário sejam armazenados em um banco de dados. 
 
-Faremos isso no próximo texto!
+Faremos isso adiante!
