@@ -45,9 +45,7 @@ No arquivo `index.js` vamos implementar o código que adiciona o evento `submit`
 
 ~~~javascript
 window.onload = function () {
-    document.getElementById("form").onsubmit = function (event) {
-        
-        event.preventDefault()  //para não dar refresh na página quando acontecer o submit
+    document.getElementById("form").onsubmit = function () {
         const nome = document.getElementById('nome')
         const celular = document.getElementById('celular')
 
