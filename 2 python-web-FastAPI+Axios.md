@@ -130,8 +130,7 @@ def root(contato: Contato):
     return contato.nome + contato.celular
 ~~~
 
-Para que nossa aplicação fique mais completa podemos implementar um código que os dados do formulário sejam armazenados em um banco de dados. 
+Para que nossa aplicação fique mais completa vamos implementar um código para que os dados do formulário sejam armazenados em um banco de dados. 
 
-Faremos isso adiante!
 
 continuar ...
