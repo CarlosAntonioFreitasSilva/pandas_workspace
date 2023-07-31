@@ -73,7 +73,7 @@ Após o servidor ter sido inicializado acesse
 - `http://127.0.0.1:8000/`
 - `http://127.0.0.1:8000/html`
 
-# Parâmetros de rotas
+## Parâmetros de rotas
 Podemos criar parâmetros de rotas utilzando a mesma sintaxe usada pelo formato de strins do Python.
 
 ~~~
@@ -91,7 +91,7 @@ def root(nome):
  return ("Olá" + nome.capitlize())
 ~~~
 
-# Parâmetros Query
+## Parâmetros Query
 
 ~~~python
 @app.get("/ola")
@@ -104,8 +104,9 @@ O método `capitalize()` foi utilizado para a primeira letra do nome ficar maiú
 Para passar parâmetros pelo URL utilizamos `URL/ola/?nome=arg`. No nosso caso acessamos
 `http://127.0.0.1:8000/ola/?nome=carlos`
 
+## Método post
 
-Parei de estudar em https://fastapi.tiangolo.com/tutorial/query-params/
+...
 
 # Cliente/Servidor
 
