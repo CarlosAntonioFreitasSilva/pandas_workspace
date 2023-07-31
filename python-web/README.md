@@ -56,35 +56,8 @@ def root():
 
 Ao acessar a rota `/` usando operação `GET` teremos como retorno o `dict`. 
 
-Podemos retornar `list` e outros tipos de dados como `string`, `int`, modelos `Pydantic` e etc.
+Podemos retornar `list` e outros tipos de dados como `string`, `int`, páginas HTML e etc.
 
-Para retornar HTML devemos importar `HTMLResponse` e adicionamos o parâmetro `response_class=HTMLResponse` na operação `GET`. Para exemplificar, vamos criar um rota `/html` que retorna uma página HTML. 
-
-~~~python
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
-
-
-app = FastAPI()
-
-
-@app.get('/')
-def root():
-    return {"message": "Olá, mundo"}
-
-@app.get('/html', response_class=HTMLResponse)
-def root():
-    return """
-    <html lang="pt-br">
-        <head>
-            <title>APP Hello</title>
-        </head>
-        <body>
-            <h1>Olá, mundo!</h1>
-            <p>Esta é minha primeira página HTML</p>
-        </body>
-    </html>
-~~~
 
 ### Executando o código
 
