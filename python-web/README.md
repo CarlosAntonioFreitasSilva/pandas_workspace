@@ -120,7 +120,14 @@ class User(BaseModel):
 def root(user: User):
     return user
 ~~~
+Resposta da requisição é um JSON
 
+~~~json
+{
+  "firstname": "string",
+  "lastname": "string"
+}
+~~~
 # Cliente/Servidor
 
 Fazer uma introdução....
