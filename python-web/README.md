@@ -56,7 +56,7 @@ def root():
 
 Ao acessar a rota `/` usando operação `GET` teremos como retorno o `dict`. 
 
-Podemos retornar `list` e outros tipos de dados como `string`, `int`, páginas HTML e etc.
+Podemos retornar list e outros tipos de dados como string, int, páginas HTML e etc.
 
 
 ### Executando o código
