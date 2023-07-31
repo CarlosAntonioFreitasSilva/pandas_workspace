@@ -77,26 +77,26 @@ Após o servidor ter sido inicializado acesse
 Podemos criar parâmetros de rotas utilzando a mesma sintaxe usada pelo formato de strins do Python.
 
 ~~~
-@app.get("/ola/{nome}")
-def root(nome):
- return ("Olá" + nome.capitlize())
+@app.get("/ola/{name}")
+def root(name):
+ return ("Olá" + name.capitlize())
 ~~~
 Para acessar a rota passando argumentos utilizamos `http://127.0.0.1:8000/ola/carlos`
 
 Podemos declarar o tipo de um parâmetro de rota usando a anotção usual do Python
 
 ~~~
-@app.get("/ola/{nome: str}")
-def root(nome):
- return ("Olá" + nome.capitlize())
+@app.get("/ola/{name: str}")
+def root(name):
+ return ("Olá" + name.capitlize())
 ~~~
 
 ## Parâmetros Query
 
 ~~~python
 @app.get("/ola")
-def root(nome):
-    return "Olá " + nome.capitalize()
+def root(name):
+    return "Olá " + name.capitalize()
 ~~~
 
 O método `capitalize()` foi utilizado para a primeira letra do nome ficar maiúscula.
@@ -111,7 +111,20 @@ Para passar parâmetros pelo URL utilizamos `URL/ola/?nome=arg`. No nosso caso a
 # Cliente/Servidor
 
 Fazer uma introdução....
+~~~python
+from fastapi import FastAPI
+from pydantic import BaseModel
 
+app = FastAPI()
+
+class User(BaseModel):
+    firstname: str
+    lastname: str
+
+@app.post('/')
+def root(user: User):
+    return user
+~~~
 
 <p style="text-align:center"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4SEvcz6KvyaqOqBpJABTBg.png" style="width:400px" /></p>
 
