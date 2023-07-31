@@ -125,7 +125,7 @@ class User(BaseModel):
 def root(user: User):
     return user
 ~~~
-Importamos `BaseModel` e criamos uma classe `User` que herda a classe `BaseModel` e passamor como parâmetro para o método um objeto do tipo `User`.
+Importamos `BaseModel` de `Pydantic` e criamos o modelo de dados como uma classe que herda a classe `BaseModel` e passamos como parâmetro para o método `root(user: User)`
 
 Resposta da requisição é um JSON
 
