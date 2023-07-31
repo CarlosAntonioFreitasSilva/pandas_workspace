@@ -101,6 +101,15 @@ Após o servidor ter sido inicializado acesse
 - `http://127.0.0.1:8000/html`
 
 ## Parâmetros de rotas
+Podemos criar parâmetros de rotas utilzando a mesma sintaxe usada pelo formato de strins do Python.
+
+~~~
+@app.get("/ola/{nome}")
+def root(nome):
+ return ("Olá" + nome.capitlize())
+~~~
+Para acessar a rota passando argumentos utilizamos `http://127.0.0.1:8000/ola/carlos`
+
 
 ~~~python
 @app.get("/ola")
