@@ -106,6 +106,11 @@ Para passar parâmetros pelo URL utilizamos `URL/ola/?nome=arg`. No nosso caso a
 
 ## Método post
 
+Quando enviamos dados do cliente (browser)
+ para API, envimos como uma estrutura chamada `request body`. Uma `response body` é uma estrutura de dados enviados da API para o cliente. Nossa API sempre envia response body para o cliente, porém nem sempre o cliente envia request body todas as vezes.
+
+Para delcararmos uma request body utilizamos modelo `Pydantic`.
+
 ~~~python
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -120,6 +125,8 @@ class User(BaseModel):
 def root(user: User):
     return user
 ~~~
+Importamos `BaseModel` e crimaos uma classe `User` que herda a classe `BaseModel` e passamor como parâmetro para o método um objeto do tipo `User`.
+
 Resposta da requisição é um JSON
 
 ~~~json
