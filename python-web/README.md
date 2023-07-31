@@ -101,8 +101,7 @@ def root(name):
 
 O método `capitalize()` foi utilizado para a primeira letra do nome ficar maiúscula.
 
-Para passar parâmetros pelo URL utilizamos `URL/ola/?nome=arg`. No nosso caso acessamos
-`http://127.0.0.1:8000/ola/?nome=carlos`
+Para passar acessar a rota e passar argumentos pela URL utilizamos `http://127.0.0.1:8000/ola/?nome=carlos`
 
 ## Método post
 
