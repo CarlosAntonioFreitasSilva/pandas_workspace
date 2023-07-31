@@ -93,7 +93,7 @@ A requisição enviada do cliente tem sua origem no host `http://127.0.0.1:5500`
 
 Até aqui a nossa rota não está recebendo os dados do formulário e quando o formulário é submetido apenas recebemos um `JSON` com mensagem de ok. 
 
-Para receber os dados do formulário precisamos criar um modelo de dados com `pydantic` de `BaseModel`.
+Para receber os dados do formulário precisamos criar um modelo de dados com `Pydantic` no qual criaremos uma classe chamada `Contatos`.
 
 ~~~python
 from fastapi import FastAPI
