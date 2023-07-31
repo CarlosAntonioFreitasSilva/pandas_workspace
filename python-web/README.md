@@ -106,7 +106,20 @@ Para passar parâmetros pelo URL utilizamos `URL/ola/?nome=arg`. No nosso caso a
 
 ## Método post
 
-...
+~~~python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class User(BaseModel):
+    firstname: str
+    lastname: str
+
+@app.post('/')
+def root(user: User):
+    return user
+~~~
 
 # Cliente/Servidor
 
