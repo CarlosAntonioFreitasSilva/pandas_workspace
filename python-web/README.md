@@ -10,8 +10,8 @@ Para instalar o FastAPI utilizamos no prompt de comando, do sistema operacional
 
 
 Comentários:
-- Existem outros frameworks tais como Roadmap e Django para desenvolver aplicações python.
-- No PHP existe o framework Lavarel que utiliza o padrão de operações de rota
+- Existem outros frameworks tais como Django para desenvolver aplicações python
+- No PHP existe o framework Laravel que utiliza o padrão de operações de rota
 
 ## App OlaMundo
 Crie o arquivo `main.py` para implementarmos o código.
