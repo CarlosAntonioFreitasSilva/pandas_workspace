@@ -125,7 +125,7 @@ class User(BaseModel):
 def root(user: User):
     return user
 ~~~
-Importamos `BaseModel` e crimaos uma classe `User` que herda a classe `BaseModel` e passamor como parâmetro para o método um objeto do tipo `User`.
+Importamos `BaseModel` e criamos uma classe `User` que herda a classe `BaseModel` e passamor como parâmetro para o método um objeto do tipo `User`.
 
 Resposta da requisição é um JSON
 
