@@ -170,7 +170,9 @@ DATABASES = {
     }
 }
 ~~~
-Agora que temos nossa aplicação `posts` criada e o nosso banco de dados, vamos agora criar um usuário para que possamos acessar nosso administrador de site onde podemos criar nossas postagens, editar e deletar para salvar no banco de dados. Esse site administrador já foi criado pelo Django, então o que precisamos fazer é so acessá-lo!
+Agora que temos nossa aplicação `posts` criada e o nosso banco de dados, vamos agora criar um usuário para que possamos acessar nosso administrador de site onde podemos criar nossas postagens, editar e deletar para salvar no banco de dados. 
+
+Esse site administrador já foi criado pelo Django, então o que precisamos fazer é so acessá-lo!
 
 
 ## Administrador de site
