@@ -26,7 +26,7 @@ Instale o SQLite acessando https://www.sqlite.org/index.html para fazer download
 
 # Projeto Blog
 
-Vamos criar um projeto no disco `C:`, então vamos acessá-lo pelo terminal do sistema operacional. No caso do Windows digitamos o comando
+Vamos criar um projeto no disco `C:`. Para isso vamos acessá-lo pelo terminal do sistema operacional. No caso do Windows digitamos o comando
 
 ~~~
 cd c:\\
