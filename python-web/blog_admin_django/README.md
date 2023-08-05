@@ -1,6 +1,6 @@
 # Administrador de Blog
 
-Nesse projeto vamos criar blog utilizando framework Django. Vamos construir um administrador de postagens e criar uma página web onde os visitantes poderão acessar as postagens do blog.
+Nesse projeto vamos criar blog utilizando framework Django. Vamos construir um administrador de postagens que podem ser exibidos em páginas web onde os visitantes poderão acessar as postagens do blog.
 
 ## Instalando Python
 Para instalar o python acesse
@@ -22,6 +22,7 @@ pip install Django==4.2.4
 ~~~
 
 ## Instalando SQLite
+Instale o SQLite acessando https://www.sqlite.org/index.html para fazer download do instalador.
 
 # Projeto Blog
 
@@ -214,4 +215,4 @@ Agora podemos adicionar, editar e deletar postagens do nosso blog.
 
 Assim, temos nosso administrador de postagens do blog pronto!
 
-O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens.
+O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens. Faremos isso no próximo tutorial.
