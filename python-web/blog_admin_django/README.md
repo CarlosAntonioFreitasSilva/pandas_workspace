@@ -170,11 +170,10 @@ DATABASES = {
     }
 }
 ~~~
-Agora que temos nossa aplicação `posts` criada e o nosso banco de dados também vamos agora criar um usuário para que possamos acessar nossa aplicação de administração onde podemos criar nossas postagens para salvar no banco de dados.
+Agora que temos nossa aplicação `posts` criada e o nosso banco de dados, vamos agora criar um usuário para que possamos acessar nosso administrador de site onde podemos criar nossas postagens, editar e deletar para salvar no banco de dados. Esse site administrador já foi criado pelo Django, então o que precisamos fazer é so acessá-lo!
 
 
-
-## Administrador
+## Administrador de site
 
 Para criar um super usuário digitamos no terminal 
 
@@ -184,24 +183,19 @@ py manage.py createsuperuser
 
 Então criamos um usuário e senha para acessar o administrador. 
 
-Após criar o usuário e senha vamos inicializar o servidor para acessar a nossa aplicação. Digitamos no terminal o comando
+Após criar o usuário e senha vamos inicializar o servidor para acessar o administrador de site. Digitamos no terminal o comando
 
 ~~~
 py manage.py runserver
 ~~~
 
-Vamos agora abrir o navegar e acessar
-
-http://127.0.0.1:8000/admin
+Vamos agora abrir o navegador e acessar http://127.0.0.1:8000/admin
 
 E digitamos o usuário e senha para fazer login.
 
 Ao acessarmos está disponível as tabelas de grupos e usuários no qual podemos adicionar novos usuários e grupos, como mostra a figura a seguir
 
-
-
 <img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/admin_django_1.png" />
-
 
 Para que a tabela de postagens esteja disponível na administração do site precisamos registrá-la o modelo. Abrimos o arquivo `admin.py` e digitamos o código
 
@@ -209,10 +203,7 @@ Para que a tabela de postagens esteja disponível na administração do site pre
 from .models import Posts
 admin.site.register(Posts)
 ~~~
+
 <img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/admin_django_2.png" />
 
-Agora podemos adicionar, editar e deletar postagens do nosso blog. 
-
-Assim, temos nosso administrador de postagens do blog pronto!
-
-O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens. Faremos isso no próximo tutorial.
+Agora podemos adicionar, editar e deletar postagens do nosso blog. Assim, temos nosso administrador de postagens do blog pronto! O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens. Faremos isso no próximo tutorial.
