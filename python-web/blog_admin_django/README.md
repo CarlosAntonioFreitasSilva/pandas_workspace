@@ -208,4 +208,6 @@ admin.site.register(Posts)
 
 <img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/admin_django_2.png" />
 
-Agora podemos adicionar, editar e deletar postagens do nosso blog. Assim, temos nosso administrador de postagens do blog pronto! O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens. Faremos isso no próximo tutorial.
+Agora podemos adicionar, editar e deletar as postagens do nosso blog. Assim, temos nosso administrador de postagens do blog pronto! 
+
+O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens. Faremos isso no próximo tutorial.
