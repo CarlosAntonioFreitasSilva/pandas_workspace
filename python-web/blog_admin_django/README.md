@@ -1,6 +1,6 @@
 # Administrador de Blog
 
-Nesse projeto vamos criar blog utilizando framework Django. Vamos construir um administrador de postagens que podem ser exibidos em páginas web onde os visitantes poderão acessar as postagens do blog.
+Vamos construir um administrador de postagens no qual podem ser exibidas em páginas web onde os visitantes poderão acessar as postagens do blog. Para tanto, utilizaremos o framework Django.
 
 ## Instalando Python
 Para instalar o python acesse
