@@ -83,7 +83,7 @@ No arquivo `apps.py` temos a classe da nossa aplicação criada pelo Django nome
 
 ### Adicionar aplicação 
 
-Após a criação da aplicação `posts` devemos acessar as configurações do nosso projeto no arquivo `settings.py`. Ao abrir o arquivo você verá, como mostra o codigo a seguir, um array `INSTALLED_APPS` no qual possui todas as aplicações do projeto:
+Após a criação da aplicação `posts` devemos acessar as configurações do nosso projeto no arquivo `settings.py`. Ao abrir o arquivo você verá, como mostra o código a seguir, um array `INSTALLED_APPS` no qual possui todas as aplicações do projeto:
 
 ~~~python
 # Application definition
