@@ -53,7 +53,7 @@ Acesse o diretório que você criou e veja que o Django criou o projeto com uma 
 Por ora, não vamos detalhar para que serve cada um desses arquivos. A medida em que avançamos no desenvolvimento do projeto passaremos por cada um deles.
 
 
-Com o projeto criado vamos agora criar a nossa aplicação. Em um projeto Django podemos ter várias aplicações e uma aplicação pode estar em vários projetos. Por exemplo, suponha que você esteja criando um projeto de uma agenda. Nesse projeto criar uma aplicação chamada `contato` para guardar nome, número de celular e e-mail, uma aplicação chamada `evento` para guardar compromissos agendados com local e data e uma aplicação chamada `notes` para armazenar anotações.
+Com o projeto criado vamos agora criar a nossa aplicação. Em um projeto Django podemos ter várias aplicações e uma aplicação pode estar em vários projetos. Por exemplo, suponha que você esteja criando um projeto de uma agenda. Nesse projeto você pode criar uma aplicação chamada `contato` para guardar nome, número de celular e e-mail de seus contatos, uma aplicação chamada `evento` para guardar compromissos agendados com local e data e uma aplicação chamada `notes` para armazenar anotações.
 
 No nosso caso, vamos criar uma aplicação `posts` em que temos as postagens do nosso blog.
 
