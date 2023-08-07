@@ -63,7 +63,7 @@ def insert_contato(session: Session, contato: Contato):
 def get_contatos(session: Session):
     return session.query(Contato).all()
 ~~~
-
+## Executando o código
 Para inserir um contato instaciamos um objeto da classe `Contato` e chamamos o método `insert_contato`
 
 ~~~python
