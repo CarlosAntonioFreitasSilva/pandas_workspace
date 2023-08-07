@@ -1,6 +1,6 @@
 # SQL Alchemy
 ## Engine
-
+Já com o banco de dados criado, chamado `database`,  no diretório do projeto vamos criar o engine.
 ~~~python
 from sqlalchemy import create_engine
 engine = create_engine("sqlite:///./database.db", echo=True)
