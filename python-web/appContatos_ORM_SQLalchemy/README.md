@@ -64,6 +64,6 @@ def get_contatos(session: Session):
 Para executar instaciamos um objeto da classe contato e chamamoso método `insert_contato`
 
 ~~~python
-carlos = Contato ("Carlos Antônio", "87 9 1234")
+carlos = Contato (nome="Carlos Antônio", celular="87 9 1234")
 insert_contato(session, carlos)
 ~~~
