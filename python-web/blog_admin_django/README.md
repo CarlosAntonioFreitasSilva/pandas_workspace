@@ -22,7 +22,7 @@ pip install Django==4.2.4
 ~~~
 
 ## Instalando SQLite
-Instale o SQLite acessando https://www.sqlite.org/index.html para fazer download do instalador.
+Instale o SQLite acessando https://sqlitestudio.pl/ para fazer download do instalador.
 
 # Projeto Blog
 
