@@ -45,6 +45,9 @@ class Contato(Base):
     id = Column(Integer, primary_key=True, index=True,autoincrement=True)
     nome = Column(String)
     celular = Column(String)
+
+    def __repr__(self):
+        return "Nome: " + self.nome + " | " + self.celular
 ~~~
 
 ### CRUD
@@ -66,5 +69,6 @@ Para inserir um contato instaciamos um objeto da classe `Contato` e chamamos o m
 ~~~python
 carlos = Contato (nome="Carlos Antônio", celular="87 9 1234")
 insert_contato(session, carlos)
+print(get_contatos(session))
 ~~~
-Revisar o método `get_contatos` 
+
