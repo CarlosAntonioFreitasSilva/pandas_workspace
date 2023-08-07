@@ -1,4 +1,4 @@
-# Backend com Python
+# FastAPI
 
 Para desenvolver a aplicação backend vamos utilizar o FastAPI que é um framework web para construção de aplicações Python baseado em padrões abertos
  - OpenAPI para criações de API, incluindo declarações de operações de rota, parâmetros, corpo de requisições
