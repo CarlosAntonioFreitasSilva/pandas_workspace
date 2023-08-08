@@ -70,7 +70,7 @@ Para obter todos os registros de uma tabela passamos como argumento para o méto
 session.query(Contato).all()
 ~~~
 
-*Aplicando filtros*
+**Aplicando filtros**
 
 ~~~python
 
