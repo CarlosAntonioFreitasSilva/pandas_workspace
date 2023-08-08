@@ -42,16 +42,16 @@ from sqlalchemy import Column, String, Integer
 
 class Contato(Base):
     __tablename__ = "contatos"
-    id = Column(Integer, primary_key=True, index=True,autoincrement=True)
+    id = Column(Integer, index=True,autoincrement=True)
     nome = Column(String)
-    celular = Column(String)
+    celular = Column(String, primary_key=True)
 
     def __repr__(self):
-        return f"Contato(id={self.id!r}, nome = {self.nome}!r, celular = {self.celular!r})"
+        return f"Contato(id={self.id}, nome = {self.nome}, celular = {self.celular})"
 ~~~
 
 ### CRUDS
-
+Fazer o CREATE TABLE
 #### Insert
 ~~~python
 
@@ -82,13 +82,21 @@ def get_contato_nome(session: Session, nome: str):
 ~~~
 
 ## Executando o código
-Para inserir um contato instaciamos um objeto da classe `Contato` e chamamos o métodos disponíveis
+Para inserir um contato instaciamos um objeto da classe `Contato` e chamamos o método `insert_contato()`.
 
 ~~~python
 carlos = Contato (nome="Carlos Antônio", celular="87 9 1234")
 insert_contato(session, carlos)
-print(get_contatos(session))
-print(get_contato_celular(session, "87 9 0101"))
-print(get_contato_nome(session, "Marcia Paes"))
 ~~~
 
+Para fazer consulta pelo celular chamamos o método `get_contato_celular()` passando como argumento a sessão e o número de celular.
+
+~~~python
+print(get_contatos(session))
+print(get_contato_celular(session, "87 9 0101"))
+~~~
+
+Consultando pelo nome
+~~~python
+print(get_contato_nome(session, "Marcia Paes"))
+~~~
