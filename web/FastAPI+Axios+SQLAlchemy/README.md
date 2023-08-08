@@ -47,28 +47,48 @@ class Contato(Base):
     celular = Column(String)
 
     def __repr__(self):
-        return "Nome: " + self.nome + " | " + self.celular
+        return f"Contato(id={self.id!r}, nome = {self.nome}!r, celular = {self.celular!r})"
 ~~~
 
-### CRUD
+### CRUDS
+
+#### Insert
 ~~~python
 
 def insert_contato(session: Session, contato: Contato):
-    db_contato = Contato(nome=contato.nome,celular=contato.celular)
-    session.add(db_contato)
+    new_contato = Contato(nome=contato.nome,celular=contato.celular)
+    session.add(new_contato)
     session.commit()
-    session.refresh(db_contato)
-    return db_contato
+    session.refresh(new_contato)
+    return new_contato
+~~~
 
+#### Select
+
+
+~~~python
 def get_contatos(session: Session):
     return session.query(Contato).all()
 ~~~
+
+Aplicando filtros
+~~~python
+
+def get_contato_celular(session: Session, celular: str):
+    return session.query(Contato).filter(Contato.celular == celular).first()
+
+def get_contato_nome(session: Session, nome: str):
+    return session.query(Contato).filter(Contato.nome == nome).all()
+~~~
+
 ## Executando o código
-Para inserir um contato instaciamos um objeto da classe `Contato` e chamamos o método `insert_contato`
+Para inserir um contato instaciamos um objeto da classe `Contato` e chamamos o métodos disponíveis
 
 ~~~python
 carlos = Contato (nome="Carlos Antônio", celular="87 9 1234")
 insert_contato(session, carlos)
 print(get_contatos(session))
+print(get_contato_celular(session, "87 9 0101"))
+print(get_contato_nome(session, "Marcia Paes"))
 ~~~
 
