@@ -48,14 +48,14 @@ class Contato(Base):
     def __repr__(self):
         return f"Contato(nome = {self.nome}, celular = {self.celular})"
 ~~~
-Agora criamos a tabela `contatos`no banco de dados conforme o modelo. Podemos criar usando SQL
+Agora criamos a tabela `contatos`no banco de dados conforme o modelo. Podemos criar usando SQL 
 ~~~SQL
 CREATE TABLE CREATE TABLE contatos (
     nome    VARCHAR (30),
     celular VARCHAR (15) PRIMARY KEY
 );
-
-ou podemos utilizar
+~~~
+ou podemos utilizar o `Session.execute()`
 
 ~~~python
 from sqlalchemy import text
