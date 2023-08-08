@@ -70,7 +70,7 @@ Para obter todos os registros de uma tabela passamos como argumento para o méto
 session.query(Contato).all()
 ~~~
 
-Aplicando filtros
+*Aplicando filtros*
 
 ~~~python
 
@@ -80,13 +80,13 @@ session.query(Contato).filter(Contato.nome == "Carlos Antônio").first()
 session.query(Contato).filter(Contato.nome == "Carlos Antônio").all()
 ~~~
 
-### Update
+#### Update
 ~~~python
 session.query(Contato).filter(Contato.celular == "87 9 1234").update({"nome":"Carlos Freitas"})
 session.commit()
 ~~~
 
-### Delete
+#### Delete
 ~~~python
 session.query(Contato).filter(Contato.nome == "Carlos Antônio").delete()
 session.commit
