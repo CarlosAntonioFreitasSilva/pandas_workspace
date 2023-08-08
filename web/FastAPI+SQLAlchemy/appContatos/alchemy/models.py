@@ -1,7 +1,5 @@
+from alchemy.declarativebase import Base
 from sqlalchemy import Column, String, Integer
-
-from database import Base
-
 
 class Contato(Base):
     __tablename__ = "contatos"
