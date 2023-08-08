@@ -76,7 +76,6 @@ session.query(Contato).all()
 
 session.query(Contato).filter(Contato.nome == "Carlos Antônio").first()
 
-
 session.query(Contato).filter(Contato.nome == "Carlos Antônio").all()
 ~~~
 
