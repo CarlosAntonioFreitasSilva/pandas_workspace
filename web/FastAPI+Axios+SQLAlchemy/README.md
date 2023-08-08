@@ -51,7 +51,7 @@ class Contato(Base):
 ~~~
 
 ### CRUDS
-Fazer o CREATE TABLE
+Fazer o CREATE TABLE 
 #### Insert
 ~~~python
 
