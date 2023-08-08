@@ -1,6 +1,6 @@
 window.onload = function () {
 
-    axios.get('http://127.0.0.1:8000/')
+    axios.get('http://127.0.0.1:8000/contatos')
         .then(function (response){
             const list = document.getElementById("list")
 
@@ -44,7 +44,6 @@ window.onload = function () {
                 // sempre será executado
             });
     }
-
 
 
 }

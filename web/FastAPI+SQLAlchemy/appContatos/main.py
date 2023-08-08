@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI,Request
 from sqlalchemy.orm import Session
 
 import crud, models, schemas
@@ -30,7 +30,18 @@ def get_db():
 def new_contato(contato: schemas.Contato, db: Session = Depends(get_db)):
     crud.insert_contato(db,contato)
 
-@app.get('/')
+@app.get('/contatos')
 def root(db: Session = Depends(get_db)):
     contatos = crud.get_contatos(db)
     return contatos
+
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
+
+templates = Jinja2Templates(directory="templates")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("index.html",{"request":request})

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>appContacts</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="index.js"></script> -->
+
+    <script>
+        window.onload = function () {
+
+            axios.get('http://127.0.0.1:8000/contatos')
+                .then(function (response) {
+                    const list = document.getElementById("list")
+
+                    const contacts = response.data
+
+                    contacts.forEach(element => {
+                        const item = document.createElement('li')
+                        item.innerText = element.nome + "  |  " + element
+                            .celular
+
+                        list.appendChild(item)
+                    });
+                })
+                .catch(function (error) {
+                    // manipula erros da requisição
+                    console.error(error);
+                })
+                .finally(function () {
+                    // sempre será executado
+                });
+
+
+            document.getElementById("form").onsubmit = function () {
+
+                const nome = document.getElementById('nome')
+                const celular = document.getElementById('celular')
+
+                axios.post('http://127.0.0.1:8000/gravar/', {
+                    nome: nome.value,
+                    celular: celular.value
+                })
+                    .then(function (response) {
+                        // manipula o sucesso da requisição
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        // manipula erros da requisição
+                        console.error(error);
+                    })
+                    .finally(function () {
+                        // sempre será executado
+                    });
+            }
+
+
+        }
+    </script>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            padding: 10px 5px;
+            border: solid 1px #e2e2e2;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="nome" placeholder="Nome">
+        <input type="text" id="celular" placeholder="Celular">
+        <input type="submit" value="OK">
+    </form>
+    <h1>Contatos</h1>
+    <ul id="list">
+
+    </ul>
+</body>
+
+</html>
