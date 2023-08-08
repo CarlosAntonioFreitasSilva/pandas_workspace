@@ -48,9 +48,23 @@ class Contato(Base):
     def __repr__(self):
         return f"Contato(nome = {self.nome}, celular = {self.celular})"
 ~~~
+Agora criamos a tabela `contatos`no banco de dados conforme o modelo. Podemos criar usando SQL
+~~~SQL
+CREATE TABLE CREATE TABLE contatos (
+    nome    VARCHAR (30),
+    celular VARCHAR (15) PRIMARY KEY
+);
 
+ou podemos utilizar
+
+~~~python
+from sqlalchemy import text
+session.execute(text('CREATE TABLE CREATE TABLE contatos (nome VARCHAR (30), celular VARCHAR (15) PRIMARY KEY)'
+session.commit()
+~~~
 ### CRUDS
-Fazer o CREATE TABLE 
+
+~~~ 
 #### Insert
 Para inserir um registro na tabela utilizamos uma instância de classe `Contato` como mostra o código a seguir:
 ~~~python
