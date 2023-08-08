@@ -42,61 +42,42 @@ from sqlalchemy import Column, String, Integer
 
 class Contato(Base):
     __tablename__ = "contatos"
-    id = Column(Integer, index=True,autoincrement=True)
     nome = Column(String)
     celular = Column(String, primary_key=True)
 
     def __repr__(self):
-        return f"Contato(id={self.id}, nome = {self.nome}, celular = {self.celular})"
+        return f"Contato(nome = {self.nome}, celular = {self.celular})"
 ~~~
 
 ### CRUDS
 Fazer o CREATE TABLE 
 #### Insert
+Para inserir um registro na tabela utilizamos uma instância de classe `Contato` como mostra o código a seguir:
 ~~~python
 
-def insert_contato(session: Session, contato: Contato):
-    new_contato = Contato(nome=contato.nome,celular=contato.celular)
-    session.add(new_contato)
-    session.commit()
-    session.refresh(new_contato)
-    return new_contato
+jose = Contato(nome="José Paulo",celular = "62 9 8976")
+session.add(jose)
+session.commit()
+session.refresh(jose)
+
 ~~~
 
 #### Select
 
+Para obter todos os registros de uma tabela passamos como argumento para o método `query()` o nome da classe que está fazendo o mapeamento.
 
 ~~~python
-def get_contatos(session: Session):
-    return session.query(Contato).all()
+session.query(Contato).all()
 ~~~
 
 Aplicando filtros
-~~~python
-
-def get_contato_celular(session: Session, celular: str):
-    return session.query(Contato).filter(Contato.celular == celular).first()
-
-def get_contato_nome(session: Session, nome: str):
-    return session.query(Contato).filter(Contato.nome == nome).all()
-~~~
-
-## Executando o código
-Para inserir um contato instaciamos um objeto da classe `Contato` e chamamos o método `insert_contato()`.
 
 ~~~python
-carlos = Contato (nome="Carlos Antônio", celular="87 9 1234")
-insert_contato(session, carlos)
+
+session.query(Contato).filter(Contato.nome == "Carlos Antônio").first()
+
+
+session.query(Contato).filter(Contato.nome == "Carlos Antônio").all()
 ~~~
 
-Para fazer consulta pelo celular chamamos o método `get_contato_celular()` passando como argumento a sessão e o número de celular.
 
-~~~python
-print(get_contatos(session))
-print(get_contato_celular(session, "87 9 0101"))
-~~~
-
-Consultando pelo nome
-~~~python
-print(get_contato_nome(session, "Marcia Paes"))
-~~~
