@@ -18,9 +18,8 @@ Podemos executar comandos SQL com o método `execute`
 ~~~python
 from sqlalchemy import text
 
-connection = engine.connect()
-connection.execute(text('CREATE TABLE contatos (id INTEGER PRIMARY KEY NOT NULL, nome VARCHAR(40), celular VARCHAR(15))'))
-connection.commit()
+session.execute(text('CREATE TABLE contatos (nome VARCHAR (40) NOT NULL, celular VARCHAR (15) NOT NULL PRIMARY KEY)'))
+session.commit()
 ~~~
 
 ## ORM
@@ -48,20 +47,7 @@ class Contato(Base):
     def __repr__(self):
         return f"Contato(nome = {self.nome}, celular = {self.celular})"
 ~~~
-Agora criamos a tabela `contatos`no banco de dados conforme o modelo. Podemos criar usando SQL 
-~~~SQL
-CREATE TABLE CREATE TABLE contatos (
-    nome    VARCHAR (30),
-    celular VARCHAR (15) PRIMARY KEY
-);
-~~~
-ou podemos utilizar o `Session.execute()`
 
-~~~python
-from sqlalchemy import text
-session.execute(text('CREATE TABLE CREATE TABLE contatos (nome VARCHAR (30), celular VARCHAR (15) PRIMARY KEY)'
-session.commit()
-~~~
 ### CRUDS
 
 ~~~ 
