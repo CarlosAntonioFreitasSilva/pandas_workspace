@@ -81,9 +81,13 @@ session.query(Contato).filter(Contato.nome == "Carlos Antônio").all()
 ~~~
 
 ### Update
-
+~~~python
 session.query(Contato).filter(Contato.celular == "87 9 1234").update({"nome":"Carlos Freitas"})
+session.commit()
+~~~
 
 ### Delete
+~~~python
 session.query(Contato).filter(Contato.nome == "Carlos Antônio").delete()
-session.commit()
+session.commit
+~~~
