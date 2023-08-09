@@ -1,4 +1,4 @@
-# Administrador de Blog
+# Django - Tutorial
 
 Vamos construir um administrador de postagens no qual podem ser exibidas em páginas web onde os visitantes poderão acessar as postagens do blog. Para tanto, utilizaremos o framework Django.
 
