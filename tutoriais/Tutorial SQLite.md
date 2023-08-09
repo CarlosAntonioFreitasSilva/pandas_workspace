@@ -5,6 +5,7 @@ Para conexão com banco de dados utiliza-se `sqlite3.connect(dir) ` passando com
 import sqlite3
 from sqlite3 import Error
 
+### Conexão
 diretorio=""C:\\SQLiteStudio\\database.db""
 def conectar():
         try:
