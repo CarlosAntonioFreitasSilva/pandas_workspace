@@ -229,3 +229,92 @@ for lab, row in datas.iterrows():
     print(lab)
     print(row)
 ~~~
+
+# While
+~~~python
+contador = 0
+
+while contador <= 10:
+    print('Contador é: ' + str(contador))
+    contador = contador + 1
+    if contador == 6:
+        break
+print('Fim da contagem')
+~~~
+
+# Funções
+
+~~~python
+def saudar(nome):
+    print('Olá, ' + nome)
+
+saudar("Carlos")
+
+def validar():
+    email = ""
+    while '@' not in email:
+        email = input('Digite seu e-mail ')
+    print('E-mail cadastrado com')
+validar()
+~~~
+Parâmetros o opcionais
+~~~python
+def saudar(nome = "usuário"):
+    print('Olá, ' + nome)
+
+saudar()
+~~~
+
+## Função Lambda
+
+~~~python
+def soma(a,b):
+    return a+b
+
+print(soma(4,3))
+~~~
+A função soma pode ser definida da seguinte maneira:
+~~~
+soma = lambda a, b: a+b
+print(soma(5,7))
+
+soma = lambda a,b,c:a+b+c
+
+print(soma(2,3,5))
+~~~
+
+A função lambda pode ser sobrescrita, sendo assim é preciso cuidado na hora de usar
+
+~~~python
+x = lambda: "Uma função"
+x = "Uma string"
+print(x)
+~~~
+
+# Importando bibliotecas
+~~~python
+import math
+import datetime
+import sqlite3 # banco de dados
+import pandas as pd #analise de dados
+fatorial = math.factorial(9)
+print(fatorial)
+
+
+data = datetime.date.today()
+dia = datetime.date.today().day
+mes = datetime.date.today().month
+ano = datetime.date.today().year
+print('A data de hoje é {}' .format(data))
+print ('Petrolina, {}/{}/{}' .format(dia,mes,ano))
+~~~
+
+# Try
+~~~python
+try:
+    print(2/0)
+except NameError:
+    print("Houve algum erro" + NameError)
+finally:
+    print("O programa foi finalizado")
+~~~
