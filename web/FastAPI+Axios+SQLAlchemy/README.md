@@ -20,7 +20,7 @@ from sqlalchemy import text
 
 session.execute(text('CREATE TABLE contatos (nome VARCHAR (40) NOT NULL, celular VARCHAR (15) NOT NULL PRIMARY KEY)'))
 session.commit()
-~~~
+~~~ 
 
 ## ORM
 
