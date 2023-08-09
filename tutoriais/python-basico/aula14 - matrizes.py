@@ -9,3 +9,5 @@ if determinante == 0:
     print("A matriz é singular")
 else:
     print("A matriz é não singular")
+
+print(type(coluna1))
