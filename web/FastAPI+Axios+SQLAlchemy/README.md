@@ -18,9 +18,8 @@ Podemos executar comandos SQL com o método `execute`
 ~~~python
 from sqlalchemy import text
 
-connection = engine.connect()
-connection.execute(text('CREATE TABLE contatos (id INTEGER PRIMARY KEY NOT NULL, nome VARCHAR(40), celular VARCHAR(15))'))
-connection.commit()
+session.execute(text('CREATE TABLE contatos (nome VARCHAR (40) NOT NULL, celular VARCHAR (15) NOT NULL PRIMARY KEY)'))
+session.commit()
 ~~~
 
 ## ORM
@@ -50,7 +49,8 @@ class Contato(Base):
 ~~~
 
 ### CRUDS
-Fazer o CREATE TABLE 
+
+~~~ 
 #### Insert
 Para inserir um registro na tabela utilizamos uma instância de classe `Contato` como mostra o código a seguir:
 ~~~python
@@ -70,14 +70,23 @@ Para obter todos os registros de uma tabela passamos como argumento para o méto
 session.query(Contato).all()
 ~~~
 
-Aplicando filtros
+**Aplicando filtros**
 
 ~~~python
 
 session.query(Contato).filter(Contato.nome == "Carlos Antônio").first()
 
-
 session.query(Contato).filter(Contato.nome == "Carlos Antônio").all()
 ~~~
 
+#### Update
+~~~python
+session.query(Contato).filter(Contato.celular == "87 9 1234").update({"nome":"Carlos Freitas"})
+session.commit()
+~~~
 
+#### Delete
+~~~python
+session.query(Contato).filter(Contato.nome == "Carlos Antônio").delete()
+session.commit
+~~~
