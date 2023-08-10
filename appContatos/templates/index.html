@@ -36,6 +36,10 @@
                 });
         }
 
+        function check(celular){
+            return "Implementar verificador"
+        }
+
         function send(nome, celular, url) {
             CONTACTS.forEach(element => {
                 if (element == celular.value) {
@@ -61,29 +65,51 @@
         function submitListener() {
             nome = document.getElementById('nome')
             celular = document.getElementById('celular')
-            
+
             document.getElementById("form").onsubmit = function () {
-                send(nome, celular,'http://127.0.0.1:8000/gravar')
+                send(nome, celular, 'http://127.0.0.1:8000/gravar')
             }
         }
 
 
         function excluir(event) {
             answer = window.confirm("Tem certeza que deseja excluir esse contato?")
-            if(answer)
+            if (answer)
                 nome = event.target.parentNode.parentNode.children[0].innerText
-                celular = event.target.parentNode.parentNode.children[1].innerText
+            celular = event.target.parentNode.parentNode.children[1].innerText
 
-                axios.post('http://127.0.0.1:8000/delete', {
-                    nome: nome,
-                    celular: celular
-                })
+            axios.post('http://127.0.0.1:8000/delete', {
+                nome: nome,
+                celular: celular
+            })
 
-                location.reload()
+            location.reload()
         }
 
-        function edit(){
-           console.log("Função não implementada!")
+        function edit(event) {
+            
+            nome = event.target.parentNode.parentNode.children[0].innerText
+            celular = event.target.parentNode.parentNode.children[1].innerText
+
+            key = event.target.parentNode.parentNode.children[1].innerText
+
+            document.getElementById('nome').value = nome
+            document.getElementById('celular').value = celular
+
+            document.getElementById("form").onsubmit = function () {
+                axios.post('http://127.0.0.1:8000/update', {
+                    key: key,
+                    nome: document.getElementById('nome').value,
+                    celular: document.getElementById('celular').value
+                })
+                    .catch(function (error) {
+                        // manipula erros da requisição
+                        alert(error);
+                    })
+                    .finally(function () {
+                        alert(response.data)
+                    });
+            }
         }
 
         window.onload = function () {
@@ -91,7 +117,7 @@
             show_contacts()
             console.log(CONTACTS)
             submitListener()
-
+            check("48958")
         }
     </script>
     <style>
@@ -116,13 +142,13 @@
             float: right;
         }
 
-        .delete{
+        .delete {
             cursor: pointer;
 
         }
 
-        .edit{
-            cursor:not-allowed;
+        .edit {
+            cursor: pointer;
             z-index: index -1;
         }
     </style>

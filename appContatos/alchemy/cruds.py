@@ -1,25 +1,31 @@
-from sqlalchemy.orm import Session
+from alchemy import session
 from alchemy.models import Contato
 
 
 # create CRUDS methods
 
-def insert_contato(session : Session, contact: Contato):
-    new_contact = Contato(nome=contact.nome,celular=contact.celular)
+def insert_contato(new_name,new_phone,session = session.my_session):
+    new_contact = Contato(nome = new_name,celular = new_phone)
     session .add(new_contact)
     session.commit()
     session.refresh(new_contact)
-    return new_contact
+    
 
-def get_contatos(session: Session):
-    return session.query(Contato).all()
+def get_contatos(session = session.my_session):
+    contacts = session.query(Contato).all() 
+    return contacts
 
-def update_contato(session: Session, contact: Contato):
-    return session.query(Contato).filter(Contato.nome == contact.nome)
 
-def delete_contato(session: Session, contact: Contato):
-    return session.query(Contato).filter(Contato.celular == contact.celular).delete()
+def update_contato(nome,celular,key,session = session.my_session):
+    # implementar a verificação se o novo celular já existe
+    if (celular == key):
+        session.query(Contato).filter(Contato.celular == key).update({"nome":nome})
+        session.commit() 
+    else:
+        session.query(Contato).filter(Contato.celular == key).update({"nome":nome,"celular":celular})
+        session.commit()
 
-# from sqlalchemy import select
-# stmt = select(User).where(User.name == "spongebob")
-# session.execute(stmt)
+
+def delete_contato(celular,session = session.my_session):
+    session.query(Contato).filter(Contato.celular == celular).delete()
+    session.commit()

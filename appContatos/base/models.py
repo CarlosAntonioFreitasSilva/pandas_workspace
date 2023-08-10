@@ -6,3 +6,6 @@ class Contato(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Update(Contato):
+    key: str
