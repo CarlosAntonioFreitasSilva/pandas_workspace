@@ -36,30 +36,8 @@
                 });
         }
 
-        function check(celular){
-            return "Implementar verificador"
-        }
-
-        function send(nome, celular, url) {
-            CONTACTS.forEach(element => {
-                if (element == celular.value) {
-                    alert("Esse número já existe!")
-                }
-            }
-            )
-
-            axios.post(url, {
-                nome: nome.value,
-                celular: celular.value
-            })
-                .catch(function (error) {
-                    // manipula erros da requisição
-                    alert(error);
-                })
-                .finally(function () {
-                    alert(response.data)
-                });
-
+        function check(celular) {
+            return CONTACTS.includes(celular)
         }
 
         function submitListener() {
@@ -67,10 +45,24 @@
             celular = document.getElementById('celular')
 
             document.getElementById("form").onsubmit = function () {
-                send(nome, celular, 'http://127.0.0.1:8000/gravar')
+                if (check(celular.value)) {
+                    alert("Esse celular já existe!")
+                } else {
+                    axios.post('http://127.0.0.1:8000/gravar', {
+                        nome: nome.value,
+                        celular: celular.value
+                    })
+                        .catch(function (error) {
+                            // manipula erros da requisição
+                            alert(error);
+                        })
+                        .finally(function () {
+                            alert(response.data)
+                        });
+                }
+
             }
         }
-
 
         function excluir(event) {
             answer = window.confirm("Tem certeza que deseja excluir esse contato?")
@@ -87,7 +79,6 @@
         }
 
         function edit(event) {
-            
             nome = event.target.parentNode.parentNode.children[0].innerText
             celular = event.target.parentNode.parentNode.children[1].innerText
 
@@ -97,11 +88,18 @@
             document.getElementById('celular').value = celular
 
             document.getElementById("form").onsubmit = function () {
-                axios.post('http://127.0.0.1:8000/update', {
+                new_name = document.getElementById('nome').value
+                new_phone = document.getElementById('celular').value
+
+                if(check(new_phone)){
+                    alert("Esse número já existe!")
+                    // Caso o usuário tenha editado somente o nome o resultado da aqui
+                }else{
+                    axios.post('http://127.0.0.1:8000/update', {
                     key: key,
-                    nome: document.getElementById('nome').value,
-                    celular: document.getElementById('celular').value
-                })
+                    nome: new_name,
+                    celular: new_phone
+                    })
                     .catch(function (error) {
                         // manipula erros da requisição
                         alert(error);
@@ -109,16 +107,16 @@
                     .finally(function () {
                         alert(response.data)
                     });
+                }
             }
         }
 
         window.onload = function () {
-
             show_contacts()
             console.log(CONTACTS)
             submitListener()
-            check("48958")
         }
+
     </script>
     <style>
         .main {
