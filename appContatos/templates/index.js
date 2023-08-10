@@ -75,26 +75,45 @@ function edit(event) {
     document.getElementById('nome').value = nome
     document.getElementById('celular').value = celular
 
-    document.getElementById("form").onsubmit = function () {
+    document.getElementById("form").onsubmit = function (event) {
         new_name = document.getElementById('nome').value
         new_phone = document.getElementById('celular').value
 
-        if(check(new_phone)){
-            alert("Esse número já existe!")
-            // Caso o usuário tenha editado somente o nome o resultado da aqui
-        }else{
+        if (new_phone == celular && new_name != nome) {
             axios.post('http://127.0.0.1:8000/update', {
-            key: key,
-            nome: new_name,
-            celular: new_phone
-            })
-            .catch(function (error) {
-                // manipula erros da requisição
-                alert(error);
-            })
-            .finally(function () {
-                alert(response.data)
-            });
+                key: key,
+                nome: new_name,
+                celular: new_phone
+                })
+                .catch(function (error) {
+                    // manipula erros da requisição
+                    alert(error);
+                })
+                .finally(function () {
+                    alert(response.data)
+                });
+        } else {
+            if (check(new_phone)) {
+                event.preventDefault()
+                alert("Esse número já existe")
+            } else {
+                alert("Atualizado")
+                axios.post('http://127.0.0.1:8000/update', {
+                key: key,
+                nome: new_name,
+                celular: new_phone
+                })
+                .catch(function (error) {
+                    // manipula erros da requisição
+                    alert(error);
+                })
+                .finally(function () {
+                    alert(response.data)
+                });
+            }
+
+
+
         }
     }
 }
