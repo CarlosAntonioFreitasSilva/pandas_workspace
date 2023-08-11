@@ -1,0 +1,30 @@
+.main {
+    max-width: 80%;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+    padding-inline-start: 0px
+}
+
+li {
+    padding: 10px 5px;
+    border: solid 1px #e2e2e2;
+    margin-bottom: 5px;
+
+}
+
+.controls {
+    float: right;
+}
+
+.delete {
+    cursor: pointer;
+
+}
+
+.edit {
+    cursor: pointer;
+    z-index: index -1;
+}

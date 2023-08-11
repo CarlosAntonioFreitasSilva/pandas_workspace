@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 
 
 app = FastAPI()
-
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.post('/gravar')
 def new_contato(contato: Contato):
