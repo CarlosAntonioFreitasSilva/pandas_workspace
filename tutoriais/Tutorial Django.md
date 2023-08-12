@@ -234,7 +234,7 @@ Temos, então, uma view criada que ao receber requisição retorná a mensagem `
 O que temos que fazer agora é criar uma rota para que essa view seja chamada. Tal rota é um caminho URL que será definido no arquivo `urls.py`. Abra o arquivo e você verá um objeto do tipo `list` chamado `urlpatterns`. Adicione nessa lista o caminho `path('/', home)` o que ficará 
 
 ~~~py
-urlpatterns = [path('/', home),
+urlpatterns = [path('', home),
                 path('admin/', admin.site.urls)]
 ~~~
 
@@ -254,6 +254,8 @@ Abra o navegador e faça o teste!
 **Observação** Sempre que criar uma view configure a sua rota em `urlpatterns` adicionando 
 
 `path('nome_da_rota/', nome_da_view)`
+
+Dessa maneira a view será requisitada pela url `http://127.0.0.1:8000/nome_da_rota`
 
 <img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/views_dajango_1.png" alt="Imagem"/>
 
