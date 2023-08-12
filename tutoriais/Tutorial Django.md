@@ -83,7 +83,7 @@ No arquivo `apps.py` temos a classe da nossa aplicação criada pelo Django nome
 
 ### Adicionar aplicação 
 
-Após a criação da aplicação `posts` devemos acessar as configurações do nosso projeto no arquivo `settings.py`. Ao abrir o arquivo você verá, como mostra o código a seguir, um array `INSTALLED_APPS` no qual possui todas as aplicações do projeto:
+Após a criação da aplicação `posts` devemos acessar as configurações do nosso projeto no arquivo `settings.py`. Ao abrir o arquivo você verá, como mostra o código a seguir, um objeto do tipo `list` chamadao `INSTALLED_APPS` no qual possui todas as aplicações do projeto:
 
 ~~~python
 # Application definition
@@ -211,3 +211,118 @@ admin.site.register(Posts)
 Agora podemos adicionar, editar e deletar as postagens do nosso blog. Assim, temos nosso administrador de postagens do blog pronto! 
 
 O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens. Para fazer isto criaremos as nossas views que são métodos que retornam repostas de solicitações HTTP. As views são criadas no arquivo `views.py` e configuraremos as urls no arquivo `urls.py`. Faremos isso no próximo tutorial.
+
+
+# Views
+
+No arquivo `view.py` implementamos métodos que recebem as requisições(request) HTTP e devolvem um resposta(response) para o cliente, como os Servlets do Java.
+
+Vamos então criar uma view `home` como no código a seguir:
+
+~~~py
+def home(request):
+    message = "Olá, mundo!"
+    return HttpResponse(message)
+
+~~~
+
+Temos, então, uma view criada que ao receber requisição retorná a mensagem `Olá, mundo!`
+
+O que temos que fazer agora é criar uma rota para que essa view seja chamada. Tal rota é um caminho URL que será definido no arquivo `urls.py`. Abra o arquivo e você verá um objeto do tipo `list` chamado `urlpatterns`. Adicione nessa lista o caminho `path('/', home)` o que ficará 
+
+~~~py
+urlpatterns = [path('/', home),
+                path('admin/', admin.site.urls)]
+~~~
+
+Como estamos adicionando o método `home()`, que está no arquivo `view.py`, então temos que importá-lo para o arquivo `urls.py`
+
+~~~py
+from posts.views import home
+
+urlpatterns = [path('/', home),
+                path('admin/', admin.site.urls)]
+~~~
+
+O que fizemos foi definir uma rota de URL, ou seja, quando o cliente acessar `http://127.0.0.1:8000/` a view `home` retornará mensagem.
+
+Abra o navegador e faça o teste!
+
+**Observação** Sempre que criar uma view configure a sua rota em `urlpatterns` adicionando 
+
+`path('nome_da_rota/', nome_da_view)`
+
+<img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/views_dajango_1.png" alt="Imagem"/>
+
+Até agora nossa view retorna apenas uma string com mensagem `Olá, mundo!`. Uma view é capaz de fazer muito mais do que isso. Podemos retornar registros de um banco de dados e renderizar páginas HTML, chamadas templates. Além disso, podemos passar dados para serem exibidos nas páginas HTML para o cliente.
+
+## Templates
+
+Os templates são as páginas HTML que iremos retornar para o cliente. Crie um diretório chamado `templates` dentro de `posts` e, dentro de templates, cria outro diretório com o mesmo nome da aplicação, no nosso caso , `posts`. Nossa árvore de diretórios ficará como mostra a seguir.
+
+~~~
+.
+└──posts
+    ├──  migrations
+    ├── templates
+        ├──posts
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── models.py
+    ├── tests.py
+    ├── views.py
+~~~
+
+O Django ira procurar as paginas HTML da aplicação em `templates/posts`.
+Vamos agora criar uma página `index.html` para ser renderizada.
+
+~~~html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Olá, mundo!</h1>
+</body>
+</html>
+~~~
+
+Com nossa template criada vamos voltar a nossa view `home` refazê-la para que ela retorne o template.
+
+~~~py
+from django.shortcuts import render
+
+def home(request):
+    return render(request,'index.html')
+
+~~~
+
+Acesse a URL da view pelo navegador para testar.
+
+## Retornando 
+
+~~~py
+nome = "José"
+
+def home(request):
+    return render(request,'index.html',nome)
+
+~~~
+
+~~~html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Olá, {{nome}}!</h1>
+</body>
+</html>
+~~~
