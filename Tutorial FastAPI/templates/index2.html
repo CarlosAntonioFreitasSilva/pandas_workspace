@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            request = new XMLHttpRequest()
+            carlos = {
+                firstname:"Carlos",
+                lastname:"Freitas"
+            }
+
+
+            document.getElementById('enviar1').onclick = function(){
+                request.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status ==200){
+                        response = JSON.parse(request.responseText)
+                       console.log("Olá, " + response.firstname)
+                    }
+                }
+                request.open("POST","http://127.0.0.1:8000/XMLHttpRequest1?firstname=Carlos&lastname=Freitas")
+                request.send()
+            }
+
+
+            document.getElementById('enviar2').onclick = function(){
+                request.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status ==200){
+                        response = JSON.parse(request.responseText)
+                       console.log("Olá, " + response.firstname + " " + response.lastname + "!")
+                    }
+                }
+                request.open("POST","http://127.0.0.1:8000/XMLHttpRequest2")
+                request.setRequestHeader("Content-type", "application/json")
+                request.send(JSON.stringify(carlos))
+            }
+       }
+
+    </script>
+</head>
+<body>
+    <button id="enviar1">Enviar 1</button>
+    <button id="enviar2">Enviar 2</button>
+    <p></p>
+</body>
+</html>

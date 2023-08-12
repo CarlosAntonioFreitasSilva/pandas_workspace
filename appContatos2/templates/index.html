@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>appContacts</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{url_for('static', path='index.js')}}"></script>
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="main">
+        <form id="form" action="gravar" method="POST">
+            <input type="text" name="nome" id="nome" placeholder="Nome" required>
+            <input type="text" name="celular" id="celular" placeholder="Celular" required>
+            <input type="submit" value="OK">
+        </form>
+        <h1>Contatos</h1>
+
+        <ul>
+            {% for i in contatos%}
+            <li><span>{{i.nome }}</span> | <span> {{i.celular}}</span> <div class="controls"><span class="edit">Editar</span> | <span class="delete" onclick="excluir(event)">Excluir</span></div></li>
+            {% endfor %}    
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

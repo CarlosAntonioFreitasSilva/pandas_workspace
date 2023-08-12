@@ -306,14 +306,14 @@ def home(request):
 
 Acesse a URL da view pelo navegador para testar.
 
-## Retornando 
-
+## Retornando dados para o cliente
+Podemos retornar dados para o cliente por meio da view. Para exemplificar, considere o objeto `nome` do tipo `dict` com no código a seguir. Passamos esse objeto como argumento no método `render()`.
 ~~~py
 nome = ("nome":"José Paulo"}
 def home(request):
     return render(request,'index.html',nome)
 ~~~
-
+Agora podemos utilizar a variável nome no HTML utilizando `{{nome}}`. Veja o código e acesse a URL.
 ~~~html
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -327,3 +327,7 @@ def home(request):
 </body>
 </html>
 ~~~
+
+Nosso proximo passo buscar registros de um banco de dados, armazenar em uma variável e passar para o HTML. 
+
+Faremos isso no proximo tutorial!

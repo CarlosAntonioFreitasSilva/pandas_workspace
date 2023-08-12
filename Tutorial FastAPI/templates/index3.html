@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Dados List</h1>
+    {{dados_list}}
+
+    <h1>Dados Dictionary</h1>
+    <p>{{dados_dict}}</p>
+    <p>{{dados_dict.nome}} | {{dados_dict.celular}}</p>
+
+
+    <h1>Dados do objeto da classe Pessoa</h1>
+    <p>{{pessoa}}</p>
+    <p>Cliente: {{pessoa.nome}} <br>CPF: {{pessoa.cpf}}</p>
+
+    <h1>Dados do objeto da classe Item</h1>
+    <p>{{item}}</p>
+    <p>{{item.name}} {{item.description}}, R$ {{item.price}}</p>
+</body>
+</html>
