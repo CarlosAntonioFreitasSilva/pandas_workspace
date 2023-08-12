@@ -257,7 +257,7 @@ Abra o navegador e faça o teste!
 
 Dessa maneira a view será requisitada pela url `http://127.0.0.1:8000/nome_da_rota`
 
-<img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/views_dajango_1.png" alt="Imagem"/>
+<img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/views_django_1.png" alt="Imagem"/>
 
 Até agora nossa view retorna apenas uma string com mensagem `Olá, mundo!`. Uma view é capaz de fazer muito mais do que isso. Podemos retornar registros de um banco de dados e renderizar páginas HTML, chamadas templates. Além disso, podemos passar dados para serem exibidos nas páginas HTML para o cliente.
 
