@@ -105,7 +105,7 @@ Devemos então adicionar a aplicação `posts` ao projeto. Para isso, adicionamo
 # Application definition
 
 INSTALLED_APPS = [
-    'posts.apps.PostsConfig',
+    'posts.apps.PostConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -309,7 +309,7 @@ Acesse a URL da view pelo navegador para testar.
 ## Retornando 
 
 ~~~py
-nome = ("nome":"José"}
+nome = ("nome":"José Paulo"}
 def home(request):
     return render(request,'index.html',nome)
 ~~~
