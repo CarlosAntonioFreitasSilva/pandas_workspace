@@ -127,7 +127,7 @@ Os modelos de uma aplicação são criados no arquivo `models.py`. Os modelos re
 ~~~python
 from django.db import models
 
-class Posts(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=300)
     text = models.TextField()
     author = models.CharField(max_length=30)
@@ -158,7 +158,7 @@ Após a execução do comando veja que aparecerá
 ~~~
 Migrations for 'posts':
   posts\migrations\0001_initial.py
-    - Create model Posts
+    - Create model Post
 ~~~
 Essa mensagem significa que e a tabela foi criada no banco de dados. Abra o banco de dados novamente que veremos a tabela criada sem que tenhamos utilizado comandos SQL.
 
@@ -204,8 +204,8 @@ Ao acessarmos está disponível as tabelas de grupos e usuários no qual podemos
 Para que a tabela de postagens esteja disponível na administração do site precisamos registrá-la o modelo. Abrimos o arquivo `admin.py` e digitamos o código
 
 ~~~python
-from .models import Posts
-admin.site.register(Posts)
+from .models import Post
+admin.site.register(Post)
 ~~~
 
 <img src="https://docentes.univasf.edu.br/carlos.freitas/imagens_markdown/admin_django_2.png" />
@@ -243,11 +243,11 @@ Como estamos adicionando o método `home()`, que está no arquivo `view.py`, ent
 ~~~py
 from posts.views import home
 
-urlpatterns = [path('/', home),
+urlpatterns = [path('', home),
                 path('admin/', admin.site.urls)]
 ~~~
 
-O que fizemos foi definir uma rota de URL, ou seja, quando o cliente acessar `http://127.0.0.1:8000/` a view `home` retornará mensagem.
+O que fizemos foi definir uma rota de URL, ou seja, quando o cliente acessar `http://127.0.0.1:8000` a view `home` retornará mensagem.
 
 Abra o navegador e faça o teste!
 
@@ -300,7 +300,7 @@ Com nossa template criada vamos voltar a nossa view `home` refazê-la para que e
 from django.shortcuts import render
 
 def home(request):
-    return render(request,'index.html')
+    return render(request,'posts/index.html')
 
 ~~~
 
@@ -309,11 +309,9 @@ Acesse a URL da view pelo navegador para testar.
 ## Retornando 
 
 ~~~py
-nome = "José"
-
+nome = ("nome":"José"}
 def home(request):
     return render(request,'index.html',nome)
-
 ~~~
 
 ~~~html
