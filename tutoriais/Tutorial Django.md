@@ -1,7 +1,9 @@
 # Django - Tutorial
 
+
 Vamos construir um administrador de postagens no qual podem ser exibidas em páginas web onde os visitantes poderão acessar as postagens do blog. Para tanto, utilizaremos o framework Django.
 
+# Parte 1
 ## Instalando Python
 Para instalar o python acesse
 https://www.python.org/downloads/ e baixe o instalador do Python para seu sistema operacional.
@@ -212,6 +214,7 @@ Agora podemos adicionar, editar e deletar as postagens do nosso blog. Assim, tem
 
 O que temos que fazer agora e criar as páginas HTML para que os visitantes possam visualizar nossas postagens. Para fazer isto criaremos as nossas views que são métodos que retornam repostas de solicitações HTTP. As views são criadas no arquivo `views.py` e configuraremos as urls no arquivo `urls.py`. Faremos isso no próximo tutorial.
 
+# Parte 2
 
 # Views
 
