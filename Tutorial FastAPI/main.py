@@ -55,31 +55,6 @@ async def create_item(item: Item):
 
 
 
-
-
-# Fomulários
-from fastapi import Form
-
-@app.get("/form", response_class = HTMLResponse)
-async def root(request: Request):
-    return templates.TemplateResponse("form.html",{"request":request})
-
-@app.post("/form")
-def root(firstname: str = Form(), lastname: str = Form()):
-    return f"Olá,  {firstname}  {lastname}!"
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Templates
 # Instalar jinja2   pip install jinja2
 
@@ -111,6 +86,31 @@ item = Item(name = "Notebook", description = "Lenovo, CORE I3", price = 243.54,t
 @app.get("/index3")
 async def root(request: Request):
     return templates.TemplateResponse("index3.html",{"request":request, "dados_list": frutas, "dados_dict": cliente, "pessoa":jose, "item": item })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Fomulários
+from fastapi import Form
+
+@app.get("/form", response_class = HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("form.html",{"request":request})
+
+@app.post("/form")
+def root(firstname: str = Form(), lastname: str = Form()):
+    return f"Olá,  {firstname}  {lastname}!"
 
 
 
