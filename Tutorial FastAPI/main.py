@@ -26,6 +26,10 @@ def root(firstname: str, lastname: str):
 
 
 
+
+
+
+
 # JSON
 from pydantic import BaseModel
 
@@ -49,8 +53,36 @@ async def create_item(item: Item):
 
 
 
+
+
+
+
+# Fomulários
+from fastapi import Form
+
+@app.get("/form", response_class = HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("form.html",{"request":request})
+
+@app.post("/form")
+def root(firstname: str = Form(), lastname: str = Form()):
+    return f"Olá,  {firstname}  {lastname}!"
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Templates
 # Instalar jinja2   pip install jinja2
+
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
@@ -60,36 +92,6 @@ templates = Jinja2Templates(directory = "templates")
 @app.get("/index1")
 async def root(request: Request):
     return templates.TemplateResponse("index1.html",{"request":request})
-
-
-
-
-
-
-
-
-
-# Requisições com XMLHttpRequest
-@app.get("/index2")
-async def root(request: Request):
-    return templates.TemplateResponse("index2.html",{"request":request})
-
-@app.post("/XMLHttpRequest1")
-def root(firstname: str, lastname: str):
-    return {"firstname":firstname,"lastname":lastname}
-
-
-class Pessoa(BaseModel):
-    firstname: str
-    lastname: str
-    
-@app.post("/XMLHttpRequest2")
-def root(pessoa: Pessoa):
-    return pessoa
-
-
-
-
 
 
 
@@ -119,17 +121,25 @@ async def root(request: Request):
 
 
 
-# Fomulários
-from fastapi import Form
 
-@app.get("/form", response_class = HTMLResponse)
+
+# Requisições com XMLHttpRequest
+@app.get("/index2")
 async def root(request: Request):
-    return templates.TemplateResponse("form.html",{"request":request})
+    return templates.TemplateResponse("index2.html",{"request":request})
 
-@app.post("/form")
-def root(firstname: str = Form(), lastname: str = Form()):
-    return f"Olá,  {firstname}  {lastname}!"
+@app.post("/XMLHttpRequest1")
+def root(firstname: str, lastname: str):
+    return {"firstname":firstname,"lastname":lastname}
 
+
+class Pessoa(BaseModel):
+    firstname: str
+    lastname: str
+    
+@app.post("/XMLHttpRequest2")
+def root(pessoa: Pessoa):
+    return pessoa
 
 
 
