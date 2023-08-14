@@ -103,6 +103,7 @@ def root(firstname: str = Form(), lastname: str = Form()):
     return f"Olá,  {firstname}  {lastname}!"
 ~~~
 
+# Redirect 
 
 # Requisições com XMLHttpRequest
 
