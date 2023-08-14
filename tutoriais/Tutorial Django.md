@@ -332,4 +332,58 @@ Agora podemos utilizar a variável nome no HTML utilizando `{{nome}}`. Veja o c�
 
 Nosso proximo passo buscar registros de um banco de dados, armazenar em uma variável e passar para o HTML. 
 
-Faremos isso no proximo tutorial!
+Vamos criar uma nova view chamada `show_posts` que retornará todas os posts que estão no banco de dados e enviar para o nosso template. Para isso, basta importarmos o modelo `Post`, chamar `Post.objects.all()` e armazenar num objeto do tipo dict que vamos chamar de `data`.Em seguida renderizamos o template passando como argumento dict `data`. Veja o código a seguir
+
+~~~python
+from .models import Post
+def show_posts(request):
+    data = {"postagens" : Post.objects.all()}
+    return render(request, 'post/postagens.html', data)
+~~~
+
+Com nossa view criada vamos definir uma rota para acessá-la no arquivo `urls.py`. Vamos criar rota adicionando `path('postagens/',show_posts)`, lembrando que view deve ser importada para o arquivo `urls.py`
+
+~~~python
+from post.views import home, show_posts
+
+urlpatterns = [
+    path('', home),
+    path('postagens/',show_posts),
+    path('admin/', admin.site.urls)
+]
+~~~
+
+Agora basta criarmos o template `postagens.html`. 
+~~~html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Leia nossos posts</h1>  
+        {%for post in postagens%}
+        <div>
+            <h2>{{post.title}}</h2> 
+            <p>{{post.text}}</p>
+            <p>{{post.author}} </p>
+            <p>Postado dia: {{post.date}}</p>
+        </div>
+        {%endfor%}
+    </ul>
+</body>
+</html>
+~~~
+
+Agora insira algumas postagens pelo site admin do Django e acesse `http://127.0.0.1:8000/postagens` para ver o resultado. Veja utilizamos um loop for dentro do HTML. Isso foi possível fazer por causa do Jinja2
+
+
+**Observação**: É possível melhorar o site de postagens adicionando a opção de fazer upload de imagens. Para isso basta adicionar mais uma coluna da tabela de postagens do banco de dados que armazena o endereço dessa imagem. Podemos então alterar nosso modelo `Post` no arquivo `models.py` e adicionamos algo do tipo 
+
+`image = models.FileField(upload_to="diretorio_da_imagem/")` 
+
+
+e em seguida executamos o `makemigrations` para atualizar a estrutura da tabela no banco de dados.
+
