@@ -385,5 +385,7 @@ Agora insira algumas postagens pelo site admin do Django e acesse `http://127.0.
 `image = models.FileField(upload_to="diretorio_da_imagem/")` 
 
 
-e em seguida executamos o `makemigrations` para atualizar a estrutura da tabela no banco de dados.
+e, em seguida, executamos o `makemigrations` para atualizar a estrutura da tabela no banco de dados.
+
+Além disso, também é possível criar templates com formulários para armazenar novas postagens, ou editar postagens, no banco de dados e personalizar com CSS caso não queira utilizar o site admin do Django.
 
