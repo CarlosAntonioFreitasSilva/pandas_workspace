@@ -50,7 +50,7 @@ class Contato(Base):
 
 ### CRUDS
 
-~~~ 
+
 #### Insert
 Para inserir um registro na tabela utilizamos uma instância de classe `Contato` como mostra o código a seguir:
 ~~~python
