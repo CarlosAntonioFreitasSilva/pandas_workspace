@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 engine = create_engine("sqlite:///./database.db", echo=True)
 ~~~
 
-## Sessões
+## Executando ORM  com Sessões
 ~~~python
 from sqlalchemy.orm import Session
 session = Session(engine)
@@ -24,6 +24,7 @@ session.commit()
 
 ## ORM
 
+
 ### Base Declarativa
 ~~~python
 from sqlalchemy.orm import DeclarativeBase
@@ -33,60 +34,101 @@ class Base(DeclarativeBase):
 
 ~~~
 
-### Models
+### Entities
 Vamos agora criar nosso modelos que são classes que herdam a classe `Base`
 ~~~python
+from sqlalchemy import String
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import Column, String, Integer
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
+
 
 class Contato(Base):
     __tablename__ = "contatos"
-    nome = Column(String)
-    celular = Column(String, primary_key=True)
+    nome : Mapped[str] = mapped_column(String(30))
+    celular: Mapped[str] = mapped_column(String(30), primary_key=True)
 
     def __repr__(self):
         return f"Contato(nome = {self.nome}, celular = {self.celular})"
 ~~~
+### DDL
 
-### CRUDS
+~~~python
+Base.metadata.create_all(engine)
+~~~
+
+
+### Manipulação de dados com ORM
 
 
 #### Insert
-Para inserir um registro na tabela utilizamos uma instância de classe `Contato` como mostra o código a seguir:
+Para inserir um registro na tabela de contatos criamos primeiro uma instância de classe `Contato` e usamos o método `add()` como mostra o código a seguir:
 ~~~python
 
 jose = Contato(nome="José Paulo",celular = "62 9 8976")
+carlos = Contato(nome="Carlos Freitas",celular = "78 9 8976")
+session.add(carlos)
 session.add(jose)
 session.commit()
-session.refresh(jose)
-
 ~~~
 
 #### Select
 
-Para obter todos os registros de uma tabela passamos como argumento para o método `query()` o nome da classe que está fazendo o mapeamento.
+Para obter todos os registros de uma tabela devemos importar o método `select()` e vamos criar nossa declaração na variável `stmt` e logo utilizamos o método `execute()` passando como argumento a variável `stmt`.
 
 ~~~python
-session.query(Contato).all()
+from sqlalchemy import select
+stmt = select(Contato)
+session.execute(stmt).all()
+~~~
+
+**Selecionando pela chave primária**
+Para selecionar um registro pela chave primária utilizamos `session.get(Entidade, valor_da_chave)`
+
+~~~python
+session.get(Contato,"Antônio")
+~~~
+
+**Selecionando colunas**
+~~~python
+stmt = select(Contato.nome)
+session.execute(stmt).all()
 ~~~
 
 **Aplicando filtros**
 
 ~~~python
-
-session.query(Contato).filter(Contato.nome == "Carlos Antônio").first()
-
-session.query(Contato).filter(Contato.nome == "Carlos Antônio").all()
+stmt = select(Contato).where(Contato.nome == "Carlos Freitas")
+session.execute(stmt).first()
+session.execute(stmt).all()
 ~~~
 
-#### Update
+**Ordenando registos**
+
 ~~~python
-session.query(Contato).filter(Contato.celular == "87 9 1234").update({"nome":"Carlos Freitas"})
+stmt = select(Contato).order_by(Contato.nome)
+session.execute(stmt).all()
+
+order_desc = select(Contato).order_by(Contato.nome.desc())
+session.execute(order_desc).all()
+~~~
+
+
+#### Update
+
+~~~python
+from sqlalchemy import update
+
+stmt = update(Contato).where(Contato.nome == "Carlos Freitas").values(nome = "Carlos Antônio)
+session.execute(stmt)
 session.commit()
 ~~~
 
 #### Delete
 ~~~python
-session.query(Contato).filter(Contato.nome == "Carlos Antônio").delete()
-session.commit
+from sqlalchemy import delete
+
+stmt = delete(Contato).where(Contato.celular == "78 9 8976")
+session.commit()
+
 ~~~

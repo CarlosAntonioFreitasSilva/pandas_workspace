@@ -64,7 +64,7 @@ from fastapi.templating import Jinja2Templates
 
 templates = Jinja2Templates(directory = "templates")
 
-@app.get("/index1")
+@app.get("/index1",response_class = HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("index1.html",{"request":request})
 ~~~
@@ -84,7 +84,7 @@ class Pessoa:
 jose = Pessoa("José",788787,"1988")
 item = Item(name = "Notebook", description = "Lenovo, CORE I3", price = 243.54,tax = None)
 
-@app.get("/index3")
+@app.get("/index3",response_class = HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("index3.html",{"request":request, "dados_list": frutas, "dados_dict": cliente, "pessoa":jose, "item": item })
 
@@ -108,7 +108,7 @@ def root(firstname: str = Form(), lastname: str = Form()):
 # Requisições com XMLHttpRequest
 
 ~~~python
-@app.get("/index2")
+@app.get("/index2",response_class = HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("index2.html",{"request":request})
 
