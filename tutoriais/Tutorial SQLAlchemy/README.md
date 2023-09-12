@@ -16,7 +16,7 @@ session = Session(engine)
 Podemos executar comandos SQL com o método `execute`
 
 ~~~python
-from sqlalchemy import text
+from sqlalchemy import text,metadata
 
 session.execute(text('CREATE TABLE contatos (nome VARCHAR (40) NOT NULL, celular VARCHAR (15) NOT NULL PRIMARY KEY)'))
 session.commit()
@@ -28,7 +28,6 @@ session.commit()
 ### Base Declarativa
 ~~~python
 from sqlalchemy.orm import DeclarativeBase
-
 class Base(DeclarativeBase):
     pass
 
